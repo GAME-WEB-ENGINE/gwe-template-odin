@@ -13,31 +13,31 @@ class Attributes {
 
     for (let modifier of this.modifiers) {
       if (modifier.getAttributeKey() == key && modifier.getType() == 'MUL') {
-        value *= modifier.value;
+        value *= modifier.getValue();
       }
     }
 
     for (let modifier of this.modifiers) {
       if (modifier.getAttributeKey() == key && modifier.getType() == 'ADD') {
-        value += modifier.value;
+        value += modifier.getValue();
       }
     }
 
     for (let modifier of this.modifiers) {
       if (modifier.getAttributeKey() == key && modifier.getType() == 'SUB') {
-        value -= modifier.value;
+        value -= modifier.getValue();
       }
     }
 
     for (let modifier of this.modifiers) {
       if (modifier.getAttributeKey() == key && modifier.getType() == 'SET') {
-        value = modifier.value;
+        value = modifier.getValue();
       }
     }
 
     for (let modifier of this.modifiers) {
       if (modifier.getAttributeKey() == key && modifier.getType() == 'FIN') {
-        value = modifier.value;
+        value = modifier.getValue();
       }
     }
 
