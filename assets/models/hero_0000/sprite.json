@@ -1,0 +1,28 @@
+{
+    "ImageFile": "assets/models/hero_0000/sprite.png",
+    "Frames": [
+        {
+            "Name": "0000.png",
+            "X": 0,
+            "Y": 0,
+            "Width": 300,
+            "Height": 340
+        },
+        {
+            "Name": "0001.png",
+            "X": 0,
+            "Y": 340,
+            "Width": 300,
+            "Height": 340
+        }
+    ],
+    "Animations": [
+        {
+            "Name": "IDLE",
+            "Frames": [
+                "0000.png"
+            ],
+            "FrameDuration": 30
+        }
+    ]
+}
