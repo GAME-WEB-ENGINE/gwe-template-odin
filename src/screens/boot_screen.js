@@ -1,6 +1,5 @@
-let fs = require('fs');
 let { GWE } = require('gwe');
-let { FightScreen } = require('./fight_screen');
+let { GameScreen } = require('./game_screen');
 let { MenuScreen } = require('./menu_screen');
 let { ShopScreen, SHOP_SCREEN_MODE } = require('./shop_screen');
 
@@ -27,7 +26,7 @@ class BootScreen extends GWE.Screen {
 
   handleMenuItemSelected(data) {
     if (data.index == 0) {
-      GWE.screenManager.requestSetScreen(new FightScreen(this.app), { battleId: 'battle_0000' });
+      GWE.screenManager.requestSetScreen(new GameScreen(this.app), { battleId: 'battle_0000' });
     }
     else if (data.index == 1) {
       GWE.screenManager.requestSetScreen(new MenuScreen(this.app));

@@ -9,7 +9,7 @@ let { UIBattleHeroes } = require('../ui/ui_battle_heroes');
 let { UIBattleStatus } = require('../ui/ui_battle_status');
 let { UIBattleArea } = require('../ui/ui_battle_area');
 
-class FightScreen extends GWE.Screen {
+class GameScreen extends GWE.Screen {
   constructor(app) {
     super(app);
     this.player = null;
@@ -26,7 +26,7 @@ class FightScreen extends GWE.Screen {
 
   onEnter(args) {
     if (!args.battleId) {
-      throw new Error('FightScreen::constructor : battleId is missing !');
+      throw new Error('GameScreen::constructor : battleId is missing !');
     }
 
     this.player = this.app.getPlayer();
@@ -226,4 +226,4 @@ class FightScreen extends GWE.Screen {
   }
 }
 
-module.exports.FightScreen = FightScreen;
+module.exports.GameScreen = GameScreen;
