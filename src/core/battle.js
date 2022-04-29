@@ -70,28 +70,34 @@ class Battle {
   }
 
   async runAction(action) {
+    // exec action
     await action.exec();
 
+    // remove died character from the queue
     for (let char of this.characterQueue) {
       if (char.getAttribute('HP') == 0) {
         this.characterQueue.splice(this.characterQueue.indexOf(char), 1);
       }
     }
 
+    // check lost
     let sumHeroHealth = this.heroes.reduce((s, hero) => s + hero.getAttribute('HP'), 0);
     if (sumHeroHealth == 0) {
       return GWE.eventManager.emit(this, 'E_LOST');
     }
 
+    // check win
     let sumEnemyHealth = this.enemies.reduce((s, enemy) => s + enemy.getAttribute('HP'), 0);
     if (sumEnemyHealth == 0) {
       return GWE.eventManager.emit(this, 'E_WIN');
     }
 
+    // if queue is empty everybody has played, return and create new turn !
     if (this.characterQueue.length == 0) {
       return this.runAction(new NewTurnBattleAction(this));
     }
 
+    // else, set character ready
     let ready = this.characterQueue.filter(char => char.isReady());
     if (ready.length == 0) {
       let i = 0;
@@ -102,6 +108,7 @@ class Battle {
       }
     }
 
+    // send the first ready character
     GWE.eventManager.emit(this, 'E_CHAR_READY', { char: ready[0] });
 
     if (ready[0] instanceof EnemyCharacter) {
