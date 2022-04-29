@@ -26,6 +26,18 @@ class Modifier {
     this.attributeKey = data['AttributeKey'];
     this.value = data['Value'];
   }
+
+  getType() {
+    return this.type;
+  }
+
+  getAttributeKey() {
+    return this.attributeKey;
+  }
+
+  getValue() {
+    return this.value;
+  }
 }
 
 module.exports.Modifier = Modifier;

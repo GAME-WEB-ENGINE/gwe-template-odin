@@ -12,31 +12,31 @@ class Attributes {
     let value = this.map[key];
 
     for (let modifier of this.modifiers) {
-      if (modifier.attributeKey == key && modifier.type == 'MUL') {
+      if (modifier.getAttributeKey() == key && modifier.getType() == 'MUL') {
         value *= modifier.value;
       }
     }
 
     for (let modifier of this.modifiers) {
-      if (modifier.attributeKey == key && modifier.type == 'ADD') {
+      if (modifier.getAttributeKey() == key && modifier.getType() == 'ADD') {
         value += modifier.value;
       }
     }
 
     for (let modifier of this.modifiers) {
-      if (modifier.attributeKey == key && modifier.type == 'SUB') {
+      if (modifier.getAttributeKey() == key && modifier.getType() == 'SUB') {
         value -= modifier.value;
       }
     }
 
     for (let modifier of this.modifiers) {
-      if (modifier.attributeKey == key && modifier.type == 'SET') {
+      if (modifier.getAttributeKey() == key && modifier.getType() == 'SET') {
         value = modifier.value;
       }
     }
 
     for (let modifier of this.modifiers) {
-      if (modifier.attributeKey == key && modifier.type == 'FIN') {
+      if (modifier.getAttributeKey() == key && modifier.getType() == 'FIN') {
         value = modifier.value;
       }
     }
