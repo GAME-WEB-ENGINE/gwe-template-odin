@@ -6,8 +6,8 @@ class UIBattleArea extends GWE.UIWidget {
     super({
       className: 'UIBattleArea',
       template: `
-      <div class="UIBattleArea-bg"></div>
-      <div class="UIBattleArea-fighters"></div>`
+      <div class="UIBattleArea-bg js-bg"></div>
+      <div class="UIBattleArea-fighters js-fighters"></div>`
     });
 
     this.battle = null;
@@ -17,7 +17,7 @@ class UIBattleArea extends GWE.UIWidget {
   }
 
   update(ts) {
-    this.node.querySelector('.UIBattleArea-bg').style.backgroundImage = 'url(' + this.battle.getBackgroundImage() + ')';
+    this.node.querySelector('.js-bg').style.backgroundImage = 'url(' + this.battle.getBackgroundImage() + ')';
     for (let fighter of this.fighters) {
       fighter.update(ts);
     }
@@ -36,13 +36,13 @@ class UIBattleArea extends GWE.UIWidget {
     if (battle) {
       for (let hero of battle.getHeroes()) {
         let fighter = CREATE_HERO_FIGHTER(hero);
-        this.node.querySelector('.UIBattleArea-fighters').appendChild(fighter.node);
+        this.node.querySelector('.js-fighters').appendChild(fighter.node);
         this.fighters.push(fighter);
       }
 
       for (let enemy of battle.getEnemies()) {
         let fighter = CREATE_ENEMY_FIGHTER(enemy, enemy.getPosition());
-        this.node.querySelector('.UIBattleArea-fighters').appendChild(fighter.node);
+        this.node.querySelector('.js-fighters').appendChild(fighter.node);
         this.fighters.push(fighter);
       }
 

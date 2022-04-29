@@ -7,42 +7,42 @@ class UIBattleAreaFighter extends GWE.UIWidget {
       className: 'UIBattleAreaFighter',
       template: `
       <div class="UIBattleAreaFighter-header">
-        <div class="UIBattleAreaFighter-header-name"></div>
+        <div class="UIBattleAreaFighter-header-name js-name"></div>
         <div class="UIBattleAreaFighter-header-lifebar">
-          <div class="UIBattleAreaFighter-header-lifebar-progress"></div>
+          <div class="UIBattleAreaFighter-header-lifebar-progress js-lifebar"></div>
         </div>
-        <div class="UIBattleAreaFighter-header-seals"></div>
+        <div class="UIBattleAreaFighter-header-seals js-seals"></div>
       </div>
       <div class="UIBattleAreaFighter-body">
-        <div class="UIBattleAreaFighter-body-effectSprite"></div>
-        <div class="UIBattleAreaFighter-body-characterSprite"></div>
+        <div class="UIBattleAreaFighter-body-effectSprite js-effect-sprite"></div>
+        <div class="UIBattleAreaFighter-body-characterSprite js-character-sprite"></div>
       </div>`
     });
 
     this.character = null;
 
     this.uiEffectSprite = new GWE.UISprite({ className: 'UISprite UIBattleAreaFighter-body-effectSprite' });
-    this.node.querySelector('.UIBattleAreaFighter-body-effectSprite').replaceWith(this.uiEffectSprite.node);
+    this.node.querySelector('.js-effect-sprite').replaceWith(this.uiEffectSprite.node);
 
     this.uiCharacterSprite = new GWE.UISprite({ className: 'UISprite UIBattleAreaFighter-body-characterSprite' });
-    this.node.querySelector('.UIBattleAreaFighter-body-characterSprite').replaceWith(this.uiCharacterSprite.node);
+    this.node.querySelector('.js-character-sprite').replaceWith(this.uiCharacterSprite.node);
 
     this.uiEffectSprite.loadFromFile('assets/sprites/effects/data.json');
   }
 
   update(ts) {
     if (this.character) {
-      this.node.querySelector('.UIBattleAreaFighter-header-name').textContent = this.character.getName();
-      this.node.querySelector('.UIBattleAreaFighter-header-lifebar-progress').style.width = parseInt(this.character.getAttribute('HP') / this.character.getAttribute('HP_MAX') * 100) + '%';
-      this.node.querySelector('.UIBattleAreaFighter-header-seals').innerHTML = '';
+      this.node.querySelector('.js-name').textContent = this.character.getName();
+      this.node.querySelector('.js-lifebar').style.width = parseInt(this.character.getAttribute('HP') / this.character.getAttribute('HP_MAX') * 100) + '%';
+      this.node.querySelector('.js-seals').innerHTML = '';
       for (let seal of this.character.getActiveSeals()) {
-        this.node.querySelector('.UIBattleAreaFighter-header-seals').innerHTML += `<img class="UIBattleAreaFighter-header-seals-item" src="${seal.iconFile}">`;
+        this.node.querySelector('.js-seals').innerHTML += `<img class="UIBattleAreaFighter-header-seals-item" src="${seal.iconFile}">`;
       }
     }
     else {
-      this.node.querySelector('.UIBattleAreaFighter-header-name').textContent = '--';
-      this.node.querySelector('.UIBattleAreaFighter-header-lifebar-progress').style.width = '0%';
-      this.node.querySelector('.UIBattleAreaFighter-header-seals').innerHTML = '';
+      this.node.querySelector('.js-name').textContent = '--';
+      this.node.querySelector('.js-lifebar').style.width = '0%';
+      this.node.querySelector('.js-seals').innerHTML = '';
     }
 
     this.uiEffectSprite.update(ts);
@@ -219,8 +219,8 @@ class UIBattleAreaFighter extends GWE.UIWidget {
 
 function SHAKE(node, ms) {
   return new Promise(resolve => {
-    setTimeout(() => { node.classList.add('UIBattleAreaFighter--shake') }, 0);
-    setTimeout(() => { node.classList.remove('UIBattleAreaFighter--shake'); resolve(); }, ms);
+    setTimeout(() => { node.classList.add('u-shake') }, 0);
+    setTimeout(() => { node.classList.remove('u-shake'); resolve(); }, ms);
   });
 }
 

@@ -455,7 +455,7 @@ UIInventoryItem-quantity, UIInventoryItem-price {
   text-shadow: rgb(0 0 0) 2px 2px 2px;
 }
 /* specifications */
-.UIBattleAreaFighter--shake {
+.UIBattleAreaFighter.u-shake {
   animation: battle-fighter-widget-shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 .UIBattleAreaFighter.u-selected {
